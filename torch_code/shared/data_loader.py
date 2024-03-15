@@ -40,7 +40,7 @@ def train_data_prep(X,y,sub_sample,average,noise):
     return total_X,total_y
 
 
-def test_data_prep(X):
+def test_data_prep(X, sub_sample):
 
     total_X = None
 
@@ -50,7 +50,7 @@ def test_data_prep(X):
     print('Shape of X after trimming:',X.shape)
 
     # Maxpooling the data (sample,22,800) -> (sample,22,800/sub_sample)
-    X_max = np.max(X.reshape(X.shape[0], X.shape[1], -1, 2), axis=3)
+    X_max = np.max(X.reshape(X.shape[0], X.shape[1], -1, sub_sample), axis=3)
 
 
     total_X = X_max
