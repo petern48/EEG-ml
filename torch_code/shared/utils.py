@@ -5,6 +5,8 @@ import numpy as np
 import torch
 from tqdm import tqdm
 
+from matplotlib import pyplot as plt
+
 # Also, seed everything for reproducibility
 # code from https://gist.github.com/ihoromi4/b681a9088f348942b01711f251e5f964#file-seed_everything-py
 def seed_everything(seed: int):
@@ -33,6 +35,8 @@ def train(model, train_loader, val_loader, optimizer, criterion, device,
     """
     # Place model on device
     model = model.to(device)
+    loss_history_train = []
+    loss_history_val = []
 
     for epoch in range(num_epochs):
         model.train()  # Set model to training mode
@@ -66,11 +70,19 @@ def train(model, train_loader, val_loader, optimizer, criterion, device,
 
         # Evaluate the model on the validation set
         avg_loss, accuracy = evaluate(model, val_loader, criterion, device)
+        loss_history_val.append(accuracy)
         print(
             f'Validation set: Average loss = {avg_loss:.4f}, Accuracy = {accuracy:.4f}'
         )
-
-
+        avg_loss_train, accuracy_train = evaluate(model, train_loader, criterion, device)
+        print(
+            f'Training set: Average loss = {avg_loss_train:.4f}, Accuracy = {accuracy_train:.4f}'
+        )
+        loss_history_train.append(accuracy_train)
+    plt.plot(loss_history_val)
+    plt.plot(loss_history_train)
+    plt.show()
+    return loss_history_train, loss_history_val
 def evaluate(model, test_loader, criterion, device):
     """
     Evaluate the MLP classifier on the test set.
