@@ -1,20 +1,20 @@
 # EEG-ml
 
 Contributors:
-Peter Nguyen
-UID: 205954558
+Peter Nguyen  
+UID: 205954558  
 Email: petern0408@g.ucla.edu
 
-Sean Tang
-UID: 905991152
+Sean Tang  
+UID: 905991152  
 Email: seantang001@g.ucla.edu
 
-Oliver Wang
-UID: 106021703
+Oliver Wang  
+UID: 106021703  
 Email: owang22@ucla.edu
 
-Jingchao Luo
-UID: 205965873
+Jingchao Luo  
+UID: 205965873  
 Email: jingchao.luo@ucla.edu
 
 ## Keras
